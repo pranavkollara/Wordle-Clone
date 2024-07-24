@@ -35,3 +35,25 @@ app.post("/adduser/:uid", async (req, res) => {
     console.log("user already exist");
   }
 });
+
+app.patch("/win/:uid", async (req,res) => {
+  try{
+    let query =  await playerModel.updateOne({id:req.params.uid},{
+       $inc : {win :1}
+    })
+    res.json("done")
+  }catch(err){
+    console.log(err)
+  }
+})
+
+app.patch("/try/:uid", async (req,res) => {
+  try{
+    let query =  await playerModel.updateOne({id:req.params.uid},{
+       $inc : {try :1}
+    })
+    res.json("done")
+  }catch(err){
+    console.log(err)
+  }
+})
